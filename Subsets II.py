@@ -15,7 +15,7 @@ class Solution:
         subsets.append(list(subset))
 
         for i in range(index,len(nums)):
-
+            # index为外层 , i 是内层，所以当 i > index时不再回溯，继续走外层
             if i > index and nums[i] == nums[i-1]:
                 continue
 
