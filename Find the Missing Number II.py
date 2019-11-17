@@ -13,6 +13,8 @@ class Solution:
         return total - sum(result[0])
 
     def dfs(self, n, s, start, path, result, visited):
+        if len(result) != 0:
+            return
         if start == len(s):
             result.append(path[:])
         for i in range(1, 3):
