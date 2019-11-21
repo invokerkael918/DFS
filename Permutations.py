@@ -94,3 +94,32 @@ class Solution2:
                 permutations.append(list(permutation))
         return permutations
 
+
+class MySolution:
+    """
+    @param: nums: A list of integers.
+    @return: A list of permutations.
+    """
+
+    def permute(self, nums):
+        # write your code here
+        result = []
+        visited = [False] * len(nums)
+        memo = {}
+        self.dfs(nums, 0, visited, [], result)
+        return result
+
+    def dfs(self, nums, start, visited, path, result):
+
+        if len(nums) == len(path):
+            result.append(path[:])
+
+        for i in range(len(visited)):
+            if visited[i]:
+                continue
+            path.append(nums[i])
+            visited[i] = True
+            self.dfs(nums, start + 1, visited, path, result)
+            path.pop()
+            visited[i] = False
+        return result
